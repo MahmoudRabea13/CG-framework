@@ -131,8 +131,8 @@ var rect5 = new Konva.Rect({
 });
 layer.add(rect5);
 stage.add(layer);
-group.scaleX(0.2);
-group.scaleY(0.2);
+group.scaleX(0.5);
+group.scaleY(0.5);
 group.x(400);
 group.y(300);
 x_new_value = document.getElementById('x_slider')
