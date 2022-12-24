@@ -1,25 +1,25 @@
 
-colorPicker = document.getElementById("color-picker"),
-colorbtns = document.querySelectorAll(".colors .option");
-color_selc= window.getComputedStyle(document.querySelector(".colors .options .selected")).getPropertyValue("background-color");
+// colorPicker = document.getElementById("color-picker"),
+// colorbtns = document.querySelectorAll(".colors .option");
+// color_selc= window.getComputedStyle(document.querySelector(".colors .options .selected")).getPropertyValue("background-color");
 
 
 
-colorPicker.addEventListener("change", () => {
-    // passing picked color value from color picker to last color btn background
-    colorPicker.parentElement.style.background = colorPicker.value;
-    color_selc=colorPicker.value;
-});
-colorbtns.forEach(btn => {
+// colorPicker.addEventListener("change", () => {
+//     // passing picked color value from color picker to last color btn background
+//     colorPicker.parentElement.style.background = colorPicker.value;
+//     color_selc=colorPicker.value;
+// });
+// colorbtns.forEach(btn => {
 
-  btn.addEventListener("click", () =>{
-    document.querySelector(".colors .options .selected").classList.remove('selected');
-    btn.classList.add('selected');
-    color_selc = window.getComputedStyle(btn).getPropertyValue("background-color");
-    console.log(color_selc);
+//   btn.addEventListener("click", () =>{
+//     document.querySelector(".colors .options .selected").classList.remove('selected');
+//     btn.classList.add('selected');
+//     color_selc = window.getComputedStyle(btn).getPropertyValue("background-color");
+//     console.log(color_selc);
 
-  })
-});
+//   })
+// });
 
 
 let stage = new Konva.Stage({

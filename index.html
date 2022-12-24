@@ -16,52 +16,15 @@
     <div class="container">
       <section class="tools-board">
         <div class="row">
-          <label class="title">Shapes</label>
-          <ul class="options">
-            <li class="option tool" id="rectangle">
-              <span id="Draw_Rectangle">Rectangle</span>
-            </li>
-            <li class="option tool" id="circle">
-              <span id="Draw Circle">Circle</span>
-            </li>
-            <li class="option tool" id="triangle">
-              <span id="Draw Triangle">Triangle</span>
-            </li>
-            <li class="option tool" id="triangle">
-              <span id="Draw Square">Square</span>
-            </li>
-     
-          </ul>
+
         </div>
         <div class="row">
-          <label class="title">Options</label>
-          <ul class="options">
-            <li class="option active tool" id="brush">
-              <span id="Move">Move Canvas</span>
-            </li>
-        
-            <li class="option">
-              <input type="range" id="size-slider" min="1" max="30" value="5">
-            </li>
-          </ul>
+          <label class="title">Operations</label>
         </div>
         <div class="row colors">
-          <label class="title">Colors</label>
-          <ul class="options">
-            <li class="option"></li>
-            <li class="option "></li>
-            <li class="option selected"></li>
-            <li class="option"></li>
-            <li class="option">
-              <input type="color" id="color-picker" value="#4A98F7">
-            </li>
-          </ul>
-        </div>
-        <div class="row buttons">
-          <button class="clear-canvas">Clear Canvas</button>
-          <button class="save-img">Save As Image</button>
           <label >X-axis</label>
           <input type="range" name="X-Axis" id="x_slider" min="-10" max="680" value="400" step="1" oninput="change_X()">
+          <br>
           <label >Y-axis</label>
           <input type="range" id="y_slider" min="-550" max="0" value="-300" step="1" oninput="change_Y()">
           <label >Scale_x</label>
@@ -70,6 +33,10 @@
           <input type="range" id="scale_slider_y" min="0" max="1.2" value="0.2" step="0.00001" oninput="change_Scale_y()">
           <label >Rotation</label>
           <input type="range" id="rotation_slider" min="0" max="360" value="0" step="1" oninput="change_Rotation()">
+        </div>
+        <div class="row buttons">
+
+
         </div>
       </section>
       <section class="drawing-board" >
