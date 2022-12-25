@@ -135,25 +135,70 @@ group.scaleX(0.5);
 group.scaleY(0.5);
 group.x(400);
 group.y(300);
+temp_x = 0;
+temp_y = 0;
+temp_scale_x = 0;
+temp_scale_y = 0;
+temp_rotate = 0;
 x_new_value = document.getElementById('x_slider')
 function change_X(){
-  group.x(x_new_value.value)
+  rect.x(+rect.getX() + +(x_new_value.value-temp_x))
+  Triangle.x(+Triangle.getX() + +(x_new_value.value-temp_x))
+  rect2.x(+rect2.getX() + +(x_new_value.value-temp_x))
+  rect3.x(+rect3.getX() + +(x_new_value.value-temp_x))
+  circle.x(+circle.getX() + +(x_new_value.value-temp_x))
+  circle2.x(+circle2.getX() + +(x_new_value.value-temp_x))
+  rect4.x(+rect4.getX() + +(x_new_value.value-temp_x))
+  rect5.x(+rect5.getX() + +(x_new_value.value-temp_x))
+  temp_x = +x_new_value.value
 };
 y_new_value = document.getElementById('y_slider')
 function change_Y(){
-  group.y(-y_new_value .value)
+  rect.y(+rect.getY() + -(y_new_value.value-temp_y))
+  Triangle.y(+Triangle.getY() + -(y_new_value.value-temp_y))
+  rect2.y(+rect2.getY() + -(y_new_value.value-temp_y))
+  rect3.y(+rect3.getY() + -(y_new_value.value-temp_y))
+  circle.y(+circle.getY() + -(y_new_value.value-temp_y))
+  circle2.y(+circle2.getY() + -(y_new_value.value-temp_y))
+  rect4.y(+rect4.getY() + -(y_new_value.value-temp_y))
+  rect5.y(+rect5.getY() + -(y_new_value.value-temp_y))
+  temp_y = +y_new_value.value
 };
 scale_x_new_value = document.getElementById('scale_slider_x')
 function change_Scale_x(){
-  group.scaleX(scale_x_new_value.value)
+  rect.ScaleX(+rect.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  Triangle.ScaleX(+Triangle.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  rect2.ScaleX(+rect2.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  rect3.ScaleX(+rect3.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  circle.ScaleX(+circle.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  circle2.ScaleX(+circle2.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  rect4.ScaleX(+rect4.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  rect5.ScaleX(+rect5.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
+  temp_scale_x = +scale_x_new_value.value
 };
 scale_y_new_value = document.getElementById('scale_slider_y')
 function change_Scale_y(){
-  group.scaleY(scale_y_new_value.value)
+  rect.ScaleY(+rect.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  Triangle.ScaleY(+Triangle.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  rect2.ScaleY(+rect2.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  rect3.ScaleY(+rect3.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  circle.ScaleY(+circle.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  circle2.ScaleY(+circle2.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  rect4.ScaleY(+rect4.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  rect5.ScaleY(+rect5.getScaleY() + +(scale_y_new_value.value-temp_scale_y))
+  temp_scale_y = +scale_y_new_value.value
 };
 rotate_new_value = document.getElementById('rotation_slider')
 function change_Rotation(){
-  group.rotation(rotate_new_value.value)
+  rect.rotate(+rect.getRotation() + +(rotate_new_value.value-temp_rotate))
+  Triangle.rotate(+Triangle.getRotation() + +(rotate_new_value.value-temp_rotate))
+  rect2.rotate(+rect2.getRotation() + +(rotate_new_value.value-temp_rotate))
+  rect3.rotate(+rect3.getRotation() + +(rotate_new_value.value-temp_rotate))
+  circle.rotate(+circle.getRotation() + +(rotate_new_value.value-temp_rotate))
+  circle2.rotate(+circle2.getRotation() + +(rotate_new_value.value-temp_rotate))
+  rect4.rotate(+rect4.getRotation() + +(rotate_new_value.value-temp_rotate))
+  rect5.rotate(+rect5.getRotation() + +(rotate_new_value.value-temp_rotate))
+  temp_rotate = +rotate_new_value.value
 };
 
 group.add(rect,Triangle,rect2,rect3,circle,circle2,rect4,rect5);
