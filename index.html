@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <script src="https://unpkg.com/konva@8.3.14/konva.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
     <link rel="stylesheet" href="style.css">
 
     <meta charset="utf-8" />
@@ -16,25 +18,22 @@
     <div class="container">
       <section class="tools-board">
         <div class="row">
-
-        </div>
-        <div class="row">
           <label class="title">Operations</label>
         </div>
         <div class="row colors">
           <label >X-axis</label>
-          <input type="range" name="X-Axis" id="x_slider" min="-1000" max="300" value="0" step="1" oninput="change_X()">
+          <input type="range" name="X-Axis" id="x_slider" min="-100" max="500" value="0" step="1" oninput="Change_X()">
           <br>
           <label >Y-axis</label>
-          <input type="range" id="y_slider" min="-100" max="600" value="200" step="1" oninput="change_Y()">
+          <input type="range" id="y_slider" min="0" max="350" value="200" step="1" oninput="Change_Y()">
           <label >Scale_x</label>
-          <input type="range" id="scale_slider_x" min="0" max="1.2" value="0.2" step="0.01" oninput="change_Scale_x()">
+          <input type="range" id="scale_slider_x" min="0" max="1.2" value="0.2" step="0.01" oninput="Change_Scale_X()">
           <label >Scale_y</label>
-          <input type="range" id="scale_slider_y" min="0" max="10" value="1" step="1" oninput="change_Scale_y()">
-          <label >Rotation</label>
-          <input type="range" id="rotation_slider" min="-360" max="360" value="0" step="1" oninput="change_Rotation()">
-        </div>
+          <input type="range" id="scale_slider_y" min="0" max="1.2" value="0.2" step="0.01" oninput="Change_Scale_Y()">
+          <!-- <label >Rotation</label> -->
+      </div>
         <div class="row buttons">
+          <button class="save-img" id = 'rotate'>Rotate</button>
 
 
         </div>

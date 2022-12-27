@@ -22,6 +22,14 @@
 // });
 
 
+
+
+
+
+
+
+
+
 let stage = new Konva.Stage({
   container: 'Konva-holder',
   width: 810,
@@ -29,6 +37,35 @@ let stage = new Konva.Stage({
 });
 
 let layer = new Konva.Layer().moveTo(stage);
+
+
+
+let 
+    rotateBy = 20,
+    startPos = {x: 80, y: 45},    
+    lineV = new Konva.Line({points: [0, -20, 0, 20], stroke: 'cyan', strokeWidth: 1}),
+    lineH = new Konva.Line({points: [-20, 0,  20, 0], stroke: 'cyan', strokeWidth: 1}),
+    circle_4 = new Konva.Circle({x: 0, y: 0, radius: 10, fill: 'transparent', stroke: 'cyan', strokeWidth: 1}),
+    cross = new Konva.Group({draggable: true, x: startPos.x, y: startPos.y});
+
+
+cross.add(lineV, lineH, circle_4);
+layer.add(cross);
+
+// Add the layer to the stage
+stage.add(layer);
+
+
+
+
+
+
+
+
+
+
+
+
 
 let group = new Konva.Group({
 x:0,
@@ -41,7 +78,6 @@ var rect = new Konva.Rect({
           height: stage.height()/2,
           fill: '#0b4906',
           stroke:'#000000',
-
         });
         layer.add(rect);
         stage.add(layer);
@@ -167,7 +203,7 @@ function change_Y(){
 scale_x_new_value = document.getElementById('scale_slider_x')
 function change_Scale_x(){
   rect.scaleX(+rect.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
-  rect.x(+rect.getX()+ -(scale_x_new_value.value-temp_scale_x)*rect.getX())
+  rect.x(+rect.getX()+ +(scale_x_new_value.value-temp_scale_x)*rect.getX())
   // rect.scaleX(+rect.getScaleX() + -(scale_x_new_value.value-temp_scale_x)/2)
   Triangle.scaleX(+Triangle.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
   rect2.scaleX(+rect2.getScaleX() + +(scale_x_new_value.value-temp_scale_x))
@@ -202,13 +238,74 @@ function change_Rotation(){
   rect5.rotate(+rect5.getRotation() + +(rotate_new_value.value-temp_rotate))
   temp_rotate = +rotate_new_value.value
 };
+function Change_X(){
+group.x(x_new_value.value)
+};
+function Change_Y(){
+group.y(y_new_value.value)
+};
+function Change_Scale_X(){
+group.scaleX(scale_x_new_value.value)
+};
+function Change_Scale_Y(){
+group.scaleY(scale_y_new_value.value)
+};
+// function rotateAroundPoint(shape, angleDegrees, point) {
+//   // sin + cos require radians
+//   let angleRadians = angleDegrees * Math.PI / 180; 
+   
+//   const x =
+//     point.x +
+//     (shape.x() - point.x) * Math.cos(angleRadians) -
+//     (shape.y() - point.y) * Math.sin(angleRadians);
+//   const y =
+//     point.y +
+//     (shape.x() - point.x) * Math.sin(angleRadians) +
+//     (shape.y() - point.y) * Math.cos(angleRadians);
+    
+//   // move the rotated shape in relation to the rotation point.
+//   shape.position({x: x, y: y});
+ 
+//   // rotate the shape in place around its natural rotation point 
+//   shape.rotation(shape.getRotation() + angleDegrees); 
+// }
+// group.x(200)
+// group.y(200)
+stage.on('click', function (e) {
+  cross.position(stage.getPointerPosition());
+  stage.draw();
+});
+function Change_Rotation(){
+
+  rotateAroundPoint(rect, rotate_new_value.value, {x:cross.x, y:cross.y});
+  // console.log((+rect.getX()+ +rect.getWidth()), (rect.getY()+rect.getHeight()))
+  // circle_center = new konva.Circle(
+  //   {x:100,
+  //   y:100,
+  //   radius: 5,
+  //   fill: 'red',
+  //   stroke: 'black',
+  //   strokeWidth: 4}
+  // );
+  // layer.add(circle_center);
+  // stage.add(layer);
+// x_temp = group.getX()
+// y_temp = group.getY()
+// group.x(y_temp)
+// group.y(x_temp)
+// width_temp = group.getWidth()
+// height_temp = group.getHeight()
+// group.width(height_temp)
+// group.height(width_temp)
+// console.log(group.getX(),group.getY())
+// group.rotation(rotate_new_value.value)
+// console.log(x_temp,y_temp)
+// group.x(x_temp)
+// group.y(y_temp)
+// group.rotate(rotate_new_value.value)
+};
 
 group.add(rect,Triangle,rect2,rect3,circle,circle2,rect4,rect5);
-group.draggable(true);
-
-
-
-
 // document.getElementById('Draw Circle').addEventListener('click',draw_C);
 // document.getElementById('Draw_Rectangle').addEventListener('click',draw_R);
 // document.getElementById('Draw Square').addEventListener('click',draw_S);
@@ -270,3 +367,70 @@ group.draggable(true);
 //               layer.add(Triangle);
 //               stage.add(layer);
 //               }
+
+
+group.position(startPos)
+cross.position(startPos);
+angle = 0;
+$('#angle').html(angle);
+$('#position').html('(' + group.x() + ', ' + group.y() + ')');
+
+
+
+// Click the stage to move the rotation point
+stage.on('click', function (e) {
+  cross.position(stage.getPointerPosition());
+  stage.draw();
+});
+
+// Rotate a shape around any point.
+// shape is a Konva shape
+// angleDegrees is the angle to rotate by, in degrees
+// point is an object {x: posX, y: posY}
+function rotateAroundPoint(shape, angleDegrees, point) {
+  let angleRadians = angleDegrees * Math.PI / 180; // sin + cos require radians
+  
+  const x =
+    point.x +
+    (shape.x() - point.x) * Math.cos(angleRadians) -
+    (shape.y() - point.y) * Math.sin(angleRadians);
+  const y =
+    point.y +
+    (shape.x() - point.x) * Math.sin(angleRadians) +
+    (shape.y() - point.y) * Math.cos(angleRadians);
+   
+  shape.position({x: x, y: y});  // move the rotated shape in relation to the rotation point.
+  shape.rotation(shape.rotation() + angleDegrees); // rotate the shape in place around its natural rotation point
+  
+}
+
+
+
+$('#rotate').on('click', function(){
+  
+  let newShape = group.clone();
+  shapes = [];
+  shapes.push(newShape);
+  // layer.add(newShape);
+  // This ghost / tails stuff is just for fun.
+  // if (shapes.length >= ghostLimit){
+  //   shapes[0].destroy();   
+  //   shapes = shapes.slice(1);
+  // }
+  // for (var i = shapes.length - 1; i >= 0; i--){
+  //   shapes[i].opacity((i + 1) * (1/(shapes.length + 2)))
+  // };
+
+  // This is the important call ! Cross is the rotation point as illustrated by crosshairs.
+  rotateAroundPoint(group, rotateBy, {x: cross.x(), y: cross.y()});
+  
+  group.moveToTop(); // ensure the 'tails' shapes do not cover the main shape
+  
+  cross.moveToTop(); // ensure the cross is visible.
+  
+  stage.draw();
+  
+  angle = angle + 10;
+  $('#angle').html(angle);
+  $('#position').html('(' + Math.round(group.x() * 10) / 10 + ', ' + Math.round(group.y() * 10) / 10 + ')');
+})
